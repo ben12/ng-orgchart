@@ -10,9 +10,9 @@
 .orgchart > :host > .oc-node::after {
   content: "";
   box-sizing: border-box;
-  bottom: -10px;
+  bottom: -12px;
   left: 50%;
-  height: 10px;
+  height: 15px;
   width: 2px;
   position: absolute;
   background-color: rgba(217, 83, 79, 0.8);
@@ -27,6 +27,10 @@
   top: -10px;
 }
 
+.orgchart > :host > .oc-groups.oc-group-scale-1 > .oc-group > :host::before {
+  height: 15px;
+}
+
 .oc-node {
   width: 140px;
   font-family: Arial;
@@ -36,6 +40,29 @@
   margin: 0;
   border: 2px solid transparent;
   text-align: center;
+}
+
+.oc-groups.oc-group-scale-1 > .oc-group > :host >  .oc-node {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.oc-groups.oc-group-scale-1 > .oc-group > :host > .oc-groups:before {
+  content: "";
+  box-sizing: border-box;
+  top: -5px;
+  left: calc(50% + 2px);
+  height: 16px;
+  position: absolute;
+  border-color: rgba(217, 83, 79, 0.8);
+  border-style: solid;
+  border-width: 0 0 0 2px;
+}
+
+.oc-groups:not(.oc-group-scale-1) > .oc-group > :host > .oc-groups.oc-group-scale-1 > .oc-group:first-child::before {
+  height: 17px;
+  top: -5px;
+  border-left-width: 2px;
 }
 
 .oc-node:hover, .oc-node.oc-is-selected {
@@ -71,6 +98,7 @@
   background-color: #fff;
   color: #333;
   text-overflow: ellipsis;
+  overflow: hidden;
   white-space: nowrap;
 }
 
@@ -88,13 +116,18 @@
   padding-left: 20px;
   position: relative;
   padding-top: 20px;
+  width: 100%;
+}
+
+.oc-groups.oc-group-scale-1 > .oc-group {
+  padding-left: 0;
 }
 
 .orgchart > :host > .oc-groups > .oc-group:first-child {
   padding-left: 10px;
 }
 
-.oc-group:not(:last-child)::before {
+.oc-group:not(:last-child)::before, .oc-groups.oc-group-scale-1 > .oc-group::before {
   content: "";
   box-sizing: border-box;
   top: 10px;
@@ -106,9 +139,44 @@
   border-width: 0 0 2px 0;
 }
 
+.oc-groups.oc-group-scale-1 > .oc-group > :host > .oc-groups.oc-group-column-1:not(.oc-group-scale-1) > .oc-group:first-child::before {
+  content: "";
+  box-sizing: border-box;
+  top: 10px;
+  left: 12px;
+  width: calc(50% - 8px);
+  position: absolute;
+  border-color: rgba(217, 83, 79, 0.8);
+  border-style: solid;
+  border-width: 0 0 2px 0;
+}
+
+.oc-groups.oc-group-scale-1 > .oc-group::before {
+  left: 0;
+  width: 100%;
+}
+
+.oc-groups.oc-group-scale-1 > .oc-group:first-child:before {
+  left: 50%;
+  width: 50%;
+}
+
+.oc-groups.oc-group-scale-1 > .oc-group:last-child:before {
+  width: 50%;
+}
+
 .orgchart > :host > .oc-groups > .oc-group:first-child::before {
   width: calc(100% + 8px);
   left: 2px;
+}
+
+.orgchart > :host > .oc-groups.oc-group-scale-1 > .oc-group:first-child::before {
+  width: calc(50% - 5px);
+  left: calc(50% + 5px);
+}
+
+.orgchart > :host > .oc-groups.oc-group-scale-1 > .oc-group:last-child::before {
+  width: 50%;
 }
 
 :host {
@@ -125,7 +193,7 @@
   content: "";
   box-sizing: border-box;
   height: 35px; /* adjust the vertical postion of link line ⊢ */
-  width: 10px;
+  width: 15px;
   position: absolute;
   left: -10px;
   top: -10px;
@@ -134,10 +202,26 @@
   border-width: 0 0 2px 2px;
 }
 
+.oc-groups.oc-group-scale-1 > .oc-group > :host::before {
+  height: 15px;
+  left: 50%;
+  border-width: 0 0 0 2px;
+}
+
 /* adjust the vertical postion of link line ⊢ */
 .oc-group:first-child > :host:first-child::before {
   height: 45px;
   top: -20px;
+}
+
+.oc-groups.oc-group-scale-1 > .oc-group:first-child > :host:first-child::before {
+  height: 15px;
+  top: -10px;
+}
+
+.oc-groups.oc-group-scale-1 > .oc-group > * > .oc-groups:not(.oc-group-scale-1) > .oc-group:first-child > :host:first-child::before {
+  height: 35px;
+  top: -10px;
 }
 
 :host:not(:last-child)::after {

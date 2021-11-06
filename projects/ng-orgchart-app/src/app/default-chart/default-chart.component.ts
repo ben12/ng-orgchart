@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Node } from 'ng-orgchart';
 
 @Component({
   selector: 'app-default-chart',
@@ -45,7 +46,7 @@ export class DefaultChartComponent implements OnInit {
       { id: '20', name: 'Yu Wei', title: 'department manager' },
       { id: '21', name: 'Yu Tie', title: 'department manager' }
     ]
-  };
+  } as Node;
 
   constructor() { }
 

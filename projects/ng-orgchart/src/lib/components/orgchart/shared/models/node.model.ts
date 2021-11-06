@@ -1,4 +1,4 @@
-export class Node {
+export interface Node {
   id: string;
   name: string;
   title: string;
